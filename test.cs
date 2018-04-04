@@ -1,25 +1,17 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using VolumeViewer;
-using System.IO;
 
 public class test : MonoBehaviour {
+    public Texture2D noise;
     
-    private static Texture2D _noise;
-    public static Texture2D noise { get {
-            if (_noise) return _noise;
-            _noise = new Texture2D(512, 512);
-            _noise.LoadImage(File.ReadAllBytes("Assets/VolumeViewerPro/textures/noise.png"));
-            return _noise;
-    } }
-
-	// Use this for initialization
 	void Start () {
-        MakeVolume("Assets/VolumeViewerPro/examples/volumes/UTDesign DICOM/Atrial Switch/Atrial Switch CMR 3D SSFP/img0001-2721.13.dcm");
+        MakeVolume(
+            "Assets/VolumeViewerPro/examples/volumes/UTDesign DICOM/Atrial Switch/Atrial Switch CMR 3D SSFP/img0001-2721.13.dcm",
+            noise);
     }
 
-    public static GameObject MakeVolume(string path)
+    public static GameObject MakeVolume(string path, Texture2D noise)
     {
         GameObject g = GameObject.CreatePrimitive(PrimitiveType.Cube);
         VolumeComponent vc = g.AddComponent<VolumeComponent>();
