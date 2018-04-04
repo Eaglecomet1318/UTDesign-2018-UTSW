@@ -4,7 +4,7 @@ using UnityEngine;
 using VolumeViewer;
 
 public class test : MonoBehaviour {
-
+    
 	// Use this for initialization
 	void Start () {
         MakeVolume("Assets/VolumeViewerPro/examples/volumes/UTDesign DICOM/Atrial Switch/Atrial Switch CMR 3D SSFP/img0001-2721.13.dcm");
@@ -23,15 +23,8 @@ public class test : MonoBehaviour {
         }
         vr.volumeObjects.Add(vc);
         VolumeFileLoader vfl = g.AddComponent<VolumeFileLoader>();
-        vfl.forceDataFormat = vfl.forceOverlayFormat = VolumeTextureFormat.Alpha8;
+        vfl.forceDataFormat = VolumeTextureFormat.Alpha8;
         vfl.dataPath = path;
-        /*     Note: The devs of VolumeViewer are morons and assume _overlayPath can't be null 
-         * when they try to compare the internal field to the public property's set value.
-         * In the code of VolumeFileLoader, make it so that _overlayPath is initialized to 
-         * an empty string. Otherwise, you'll end up with null pointer exceptions.
-         */
-        vfl.overlayPath = "Assets/VolumeViewerPro/examples/volumes/MRI_Overlay.nii";
-        vfl.StartCoroutine(vfl.loadFiles());
         return g;
     }
 }
