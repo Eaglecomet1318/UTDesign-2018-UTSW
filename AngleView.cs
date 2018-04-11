@@ -5,10 +5,54 @@ public class AngleView : MonoBehaviour {
     
     public Camera viewer;
     public Text target;
-	
-	void OnGUI () {
+    public float label_height = 1f;
+    public float label_scale = .025f;
+
+    private void Start()
+    {
         if (!viewer) viewer = Camera.main;
-        if (!target) return;
+        if (!target)
+        {
+            GameObject g = new GameObject();
+            Canvas canvas = g.AddComponent<Canvas>();
+            canvas.renderMode = RenderMode.WorldSpace;
+            CanvasScaler cs = g.AddComponent<CanvasScaler>();
+            cs.scaleFactor = 10.0f;
+            cs.dynamicPixelsPerUnit = 10f;
+            GraphicRaycaster gr = g.AddComponent<GraphicRaycaster>();
+            g.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 3.0f);
+            g.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 3.0f);
+            GameObject g2 = new GameObject();
+            g2.name = "Text";
+            g2.transform.Rotate(0, 180, 0);
+            g2.transform.parent = g.transform;
+            Text t = g2.AddComponent<Text>();
+            target = t;
+            g2.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 3.0f);
+            g2.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 3.0f);
+            t.alignment = TextAnchor.MiddleCenter;
+            t.horizontalOverflow = HorizontalWrapMode.Overflow;
+            t.verticalOverflow = VerticalWrapMode.Overflow;
+            Font ArialFont = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
+            t.font = ArialFont;
+            t.fontSize = 7;
+            t.text = "Test";
+            t.enabled = true;
+            t.color = Color.yellow;
+
+            g.name = "Text Label";
+            bool bWorldPosition = false;
+
+            g.GetComponent<RectTransform>().SetParent(transform, bWorldPosition);
+            g.transform.localPosition = new Vector3(0f, label_height, 0f);
+            g.transform.localScale = new Vector3(
+                                                 1.0f / transform.localScale.x * label_scale,
+                                                 1.0f / transform.localScale.y * label_scale,
+                                                 1.0f / transform.localScale.z * label_scale);
+        }
+    }
+
+    void OnGUI () {
         Vector3 distance = (viewer.transform.position - transform.position).normalized;
         float ax = Mathf.Rad2Deg * Mathf.Acos(distance.x * transform.right.x);
         float ay = Mathf.Rad2Deg * Mathf.Acos(distance.y * transform.up.y);
@@ -29,6 +73,7 @@ public class AngleView : MonoBehaviour {
             caudal?"caudal":"cranial",
             (int)ax,
             (int)ay);
+        target.GetComponentInParent<Canvas>().transform.LookAt(viewer.transform);
     }
 
     //returns -1 when to the left, 1 to the right, -1 if neither.
