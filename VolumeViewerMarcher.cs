@@ -26,7 +26,7 @@ public class VolumeViewerMarcher : MonoBehaviour
         }
     }
 
-    void ConvertToMesh(float cutoff = 0.5f)
+    public void ConvertToMesh(float cutoff = 0.5f)
     {
         //Set the mode used to create the mesh.
         //Cubes is faster and creates less verts, tetrahedrons is slower and creates more verts but better represents the mesh surface.
