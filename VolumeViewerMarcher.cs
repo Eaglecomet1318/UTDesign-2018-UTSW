@@ -11,7 +11,7 @@ public class VolumeViewerMarcher : MonoBehaviour
 {
     public Material m_material;
 
-    public MARCHING_MODE mode = MARCHING_MODE.TETRAHEDRON;
+    public MARCHING_MODE mode = MARCHING_MODE.CUBES;
 
     public int seed = 0;
 
