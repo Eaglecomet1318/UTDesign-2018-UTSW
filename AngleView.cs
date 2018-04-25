@@ -13,8 +13,8 @@ public class AngleView : MonoBehaviour {
         if (!viewer) viewer = Camera.main;
         if (!target)
         {
-            GameObject g = new GameObject();
-            Canvas canvas = g.AddComponent<Canvas>();
+            GameObject g = new GameObject();                    // Camera is rendered as GameObject
+            Canvas canvas = g.AddComponent<Canvas>();           // on canvas.
             canvas.renderMode = RenderMode.WorldSpace;
             CanvasScaler cs = g.AddComponent<CanvasScaler>();
             cs.scaleFactor = 10.0f;
@@ -58,11 +58,12 @@ public class AngleView : MonoBehaviour {
         float ay = Mathf.Rad2Deg * Mathf.Acos(distance.y * transform.up.y);
         //float az = Mathf.Rad2Deg * Mathf.Acos(distance.z * transform.forward.z);
 
+        // Angle calculations (based on position)
         if (ax > 90) ax = ax - 90;
         else ax = 90 - ax;
         if (ay > 90) ay = ay - 90;
         else ay = 90 - ay;
-        //target.text = string.Format("{0} {1} {2}", (int)ax, (int)ay, (int)az);
+
 
         bool left = Direction(transform.forward, distance, transform.up) == -1;
         bool anterior = Direction(transform.right, distance, transform.up) == -1;
