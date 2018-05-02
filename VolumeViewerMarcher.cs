@@ -1,3 +1,5 @@
+/* Semester: Spring 2018
+*/
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -5,8 +7,14 @@ using MarchingCubesProject;
 using VolumeViewer;
 
 public enum MARCHING_MODE { CUBES, TETRAHEDRON };
-
 [RequireComponent(typeof(VolumeComponent))]
+
+/* Semester: Spring 2018
+|------------------ public class VolumeViewerMarcher-------------------
+| This class allows the DICOM image, once any modifications needed are
+| made, to be converted into a mesh, which can then be converted into
+| an STL.
+*/
 public class VolumeViewerMarcher : MonoBehaviour
 {
     public Material m_material;
@@ -67,12 +75,13 @@ public class VolumeViewerMarcher : MonoBehaviour
         List<int> indices = new List<int>();
 
         Debug.Log("Starting marching cubes...");
+        
         //The mesh produced is not optimal. There is one vert for each index.
         //Would need to weld vertices for better quality mesh.
         marching.Generate(voxels, width, height, length, verts, indices);
 
-        //A mesh in unity can only be made up of 65000 verts.
-        //Need to split the verts between multiple meshes.
+        /*A mesh in unity can only be made up of 65000 verts,
+        | and need to split the verts between multiple meshes. */
 
         int maxVertsPerMesh = 30000; //must be divisible by 3, ie 3 verts == 1 triangle
         int numMeshes = verts.Count / maxVertsPerMesh + 1;
@@ -100,12 +109,18 @@ public class VolumeViewerMarcher : MonoBehaviour
 
             if (splitVerts.Count == 0) continue;
 
+            /*
+            | Creates mesh with default vertices and edges
+            */
             Mesh mesh = new Mesh();
             mesh.SetVertices(splitVerts);
             mesh.SetTriangles(splitIndices, 0);
             mesh.RecalculateBounds();
             mesh.RecalculateNormals();
-
+            
+            /*
+            | 
+            */
             GameObject go = new GameObject("Mesh");
             go.transform.parent = marchingObject.transform;
             go.AddComponent<MeshFilter>();
