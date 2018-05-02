@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 using MarchingCubesProject;
@@ -16,15 +16,6 @@ public class VolumeViewerMarcher : MonoBehaviour
     public int seed = 0;
 
     List<GameObject> meshes = new List<GameObject>();
-
-    void Update()
-    {
-        if(Input.GetKeyDown(name: "f8"))
-        {
-            ConvertToMesh(GetComponent<VolumeComponent>().cutValueRangeMin);
-            GetComponent<MeshRenderer>().enabled = false;
-        }
-    }
 
     public void ConvertToMesh(float cutoff = 0.5f)
     {
@@ -126,10 +117,10 @@ public class VolumeViewerMarcher : MonoBehaviour
 
             meshes.Add(go);
         }
-
+        marchingObject.transform.localPosition = Vector3.zero;
         marchingObject.transform.localRotation = Quaternion.Euler(Vector3.zero);
         marchingObject.transform.localScale = new Vector3(1f / width, 1f / height, 1f / length);
         Debug.Log("Finishing marching cubes...");
-
+        GetComponent<MeshRenderer>().enabled = false;
     }
 }
