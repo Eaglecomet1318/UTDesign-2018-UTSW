@@ -9,7 +9,8 @@ using VRTK;
 /* UTD Semester: Spring 2018
 |------------------ public class DICOMMenu-------------------
 | This class displays a side panel of different modifications
-| that can be 
+| that can be used on the DICOM image.
+|
 */
 public class DICOMMenu : MonoBehaviour
 {
@@ -58,6 +59,7 @@ public class DICOMMenu : MonoBehaviour
         Debug.Log("test");
         mInstance.gameObject.SetActive(!mInstance.gameObject.activeSelf);
     }
+    
     /* UTD Semester: Spring 2018
     |------------------ void Awake() -------------------
     | This void function activates the various buttons and sliders on the
@@ -80,9 +82,18 @@ public class DICOMMenu : MonoBehaviour
         greenTF.onClick.AddListener(delegate { Debug.Log("Green TF button pressed."); greenTFChanged(); });
         blueTF.onClick.AddListener(delegate { Debug.Log("Blue TF button pressed."); blueTFChanged(); });
         purpleTF.onClick.AddListener(delegate { Debug.Log("Purple TF button pressed."); purpleTFChanged(); });
+        
         mainVolume.tfData = GetComponent<tfDataMode>().list[0]; // Default TF
     }
-
+    
+    /* UTD Semester: Spring 2018
+    |------------------ void Update() -----------------------
+    | This void function allows the sliders and buttons to be 
+    | modified (pushed, dragged, selected, etc.) by the VRTK
+    | device (in our case, HTC Vive controllers, though Oculus
+    | will do just as well).
+    | 
+     */
     public void Update()
     {
         GameObject left, right;
