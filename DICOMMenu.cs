@@ -1,13 +1,16 @@
+/* UTD Spring 2018 
+*/
+
 using UnityEngine;
 using VolumeViewer;
 using UnityEngine.UI;
 using VRTK;
-/* Semester: Spring 2018
+
+/* UTD Semester: Spring 2018
 |------------------ public class DICOMMenu-------------------
 | This class displays a side panel of different modifications
 | that can be 
 */
-
 public class DICOMMenu : MonoBehaviour
 {
     private static DICOMMenu _mInstance;
@@ -31,8 +34,8 @@ public class DICOMMenu : MonoBehaviour
     public Slider height;
     
       /* Sp18
-    | Transfer function buttons, each of which
-    | apllies 
+    | convert to STL (creates mesh for now) function button
+    | button to disable any transfer functions applied
     */  
     public Button convertToSTL;
     public Button disableTF;
@@ -55,14 +58,21 @@ public class DICOMMenu : MonoBehaviour
         Debug.Log("test");
         mInstance.gameObject.SetActive(!mInstance.gameObject.activeSelf);
     }
-
+/* UTD Semester: Spring 2018
+|------------------ void Awake() -------------------
+| This void function activates the various buttons and sliders on the
+| DICOM menu panel.
+|| 
+*/
     void Awake()
     {
         mInstance = this;
         cutValue.onValueChanged.AddListener(delegate { CutValueChanged(); });
         contrast.onValueChanged.AddListener(delegate { ContrastChanged(); });
+        
         convertToSTL.onClick.AddListener(delegate { Debug.Log("Convert to STL button pressed."); ConvertToSTL(); });
         disableTF.onClick.AddListener(delegate { Debug.Log("Disable TF button pressed."); disableTransferFunction(); });
+        
         redTF.onClick.AddListener(delegate { Debug.Log("Red TF button pressed."); redTFChanged(); });
         darkRedTF.onClick.AddListener(delegate { Debug.Log("Dark Red TF button pressed."); darkRedTFChanged(); });
         orangeTF.onClick.AddListener(delegate { Debug.Log("Orange TF button pressed."); orangeTFChanged(); });
@@ -141,17 +151,17 @@ public class DICOMMenu : MonoBehaviour
 
     public void redTFChanged()
     {
-        mainVolume.tfData = GetComponent<tfDataMode>().list[0];
+        mainVolume.tfData = GetComponent<tfDataMode>().list[0]; // Appears first in list.
 
-        if (mainVolume.tfDataBlendMode == VolumeBlendMode.Disabled)
+        if (mainVolume.tfDataBlendMode == VolumeBlendMode.Disabled) // if transfer function is not applied,
         {
-            mainVolume.tfDataBlendMode = VolumeBlendMode.Multiply;
+            mainVolume.tfDataBlendMode = VolumeBlendMode.Multiply;  // activate it.
         }
     }
 
     public void darkRedTFChanged()
     {
-        mainVolume.tfData = GetComponent<tfDataMode>().list[1];
+        mainVolume.tfData = GetComponent<tfDataMode>().list[1];  
 
         if (mainVolume.tfDataBlendMode == VolumeBlendMode.Disabled)
         {
