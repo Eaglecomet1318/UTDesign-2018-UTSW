@@ -58,12 +58,12 @@ public class DICOMMenu : MonoBehaviour
         Debug.Log("test");
         mInstance.gameObject.SetActive(!mInstance.gameObject.activeSelf);
     }
-/* UTD Semester: Spring 2018
-|------------------ void Awake() -------------------
-| This void function activates the various buttons and sliders on the
-| DICOM menu panel.
-|| 
-*/
+    /* UTD Semester: Spring 2018
+    |------------------ void Awake() -------------------
+    | This void function activates the various buttons and sliders on the
+    | DICOM menu panel.
+    || 
+     */
     void Awake()
     {
         mInstance = this;
@@ -144,6 +144,9 @@ public class DICOMMenu : MonoBehaviour
         mainVolume.GetComponent<VolumeViewerMarcher>().ConvertToMesh(mainVolume.cutValueRangeMin);
     }
 
+    /* 
+    | All functions to do with transfer functions are accessed in the mainVolume class 
+    */
     public void disableTransferFunction()
     {
         mainVolume.tfDataBlendMode = VolumeBlendMode.Disabled;
