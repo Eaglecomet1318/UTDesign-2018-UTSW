@@ -3,9 +3,8 @@ using UnityEngine.UI;
 
 /* Semester: Spring 2018
 |------------------ public class AngleView------------------
-| This class allows the camera to track the 
-|
-|
+| This class allows the camera to track the position of the heart
+| and the angle that it is being looked at by the viewer.
 |
 */
 public class AngleView : MonoBehaviour {
@@ -31,8 +30,8 @@ public class AngleView : MonoBehaviour {
             g.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 3.0f);
             
             /*
-            | 
-            |
+            | Creates text of Angle Viewer
+            | and allows it to move with the Angle Viewer Game Object.
             */
             GameObject g2 = new GameObject();
             g2.name = "Text";
@@ -61,7 +60,10 @@ public class AngleView : MonoBehaviour {
 
             g.name = "Text Label";
             bool bWorldPosition = false;
-
+            
+	    /*
+	    Allows Angle Viewer text to move with the camera.
+	    */
             g.GetComponent<RectTransform>().SetParent(transform, bWorldPosition);
             g.transform.localPosition = new Vector3(0f, label_height, 0f);
             g.transform.localScale = new Vector3(
@@ -73,7 +75,7 @@ public class AngleView : MonoBehaviour {
 
     /* Semester: Spring 2018
     |-------------void OnGUI()----------------------------------------------
-    |           Camera Angle Tracker
+    |           Angle Viewer Tracker
     |-----------------------------------------------------------------------
     | This function helps track the position of a camera object and displays 
     | the angle of the DICOM image in the VR environment that is being looked 
