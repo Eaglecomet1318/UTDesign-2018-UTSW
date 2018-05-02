@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-/* Semester: Spring 2018
+/* UTD Semester: Spring 2018
 |------------------ public class AngleView------------------
 | This class allows the camera to track the position of the heart
 | and the angle that it is being looked at by the viewer.
@@ -73,7 +73,7 @@ public class AngleView : MonoBehaviour {
         }
     }
 
-    /* Semester: Spring 2018
+    /* UTD Semester: Spring 2018
     |-------------void OnGUI()----------------------------------------------
     |           Angle Viewer Tracker
     |-----------------------------------------------------------------------
