@@ -145,7 +145,8 @@ public class DICOMMenu : MonoBehaviour
     }
 
     /* 
-    | All functions to do with transfer functions are accessed in the mainVolume class 
+    | All functions to do with transfer functions are accessed in the member function tfDataBlendMode which is set
+    | equal to the Disabled constant (not active) of the VolumeBlendMode enumerated list in VolumeUtilities.cs .
     */
     public void disableTransferFunction()
     {
