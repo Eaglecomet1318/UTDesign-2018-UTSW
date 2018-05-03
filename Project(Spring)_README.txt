@@ -1,6 +1,7 @@
 PREREQUSITES:
-1. VolumeViewerPro
+1. Unity -> VolumeViewerPro
 2. VRTK
+3. Various code files from previous semester(s).
 
   INSTALLING VOLUMEVIWERPRO
   1. If necessary, buy and download from https://assetstore.unity.com/packages/vfx/shaders/fullscreen-camera-effects/volume-viewer-pro-83185
