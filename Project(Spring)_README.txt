@@ -11,7 +11,7 @@ PREREQUSITES:
   1. Consult VolumeViewerPro SECTION 5 (page 8 of Pdf file)
 
   DICOM MENU
-  1. To a
+  1. To modify DICOM menu attributes:
     1a. To modify the DICOM menu panel code, check the DICOMMenu.Cs file
     1b. To continue modifications on Unity platform, access files under Left Controllers
   
