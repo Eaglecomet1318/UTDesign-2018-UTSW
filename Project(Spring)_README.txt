@@ -13,7 +13,7 @@ PREREQUSITES:
   DICOM MENU
   1. To modify DICOM menu attributes:
     1a. To modify the DICOM menu panel code, check the DICOMMenu.Cs file
-    1b. To continue modifications on Unity platform, access files under Left Controllers
+    1b. To continue modifications on the Unity platform, access files under Left Controllers -> DICOM Menu ->
   
 ACKNOWLEDGEMENTS
   A. ASSETS
@@ -21,6 +21,10 @@ ACKNOWLEDGEMENTS
     II. VRTK
   B. TEAMS
     I. UTD Fall 2017 UTSW Team
+            1. Brandon Marzik
+            2. Catherine Nguyen
+            3. Gabriela Rodriguez
+            4. Husam Abdelhadi
     II. UTD Spring 2018 UTSW Team 
             1. William Ben Speicher
             2. Lane Miller
