@@ -19,6 +19,7 @@ public class AngleView : MonoBehaviour {
         if (!viewer) viewer = Camera.main;
         if (!target)
         {
+		/* Sets up canvas for the text */
             GameObject g = new GameObject();
             Canvas canvas = g.AddComponent<Canvas>();
             canvas.renderMode = RenderMode.WorldSpace;
