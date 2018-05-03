@@ -12,8 +12,14 @@ PREREQUSITES:
 
   DICOM MENU
   1. To modify DICOM menu attributes:
-    1a. To modify the DICOM menu panel code, check the DICOMMenu.Cs file
-    1b. To continue modifications on the Unity platform, access files under Left Controllers -> DICOM Menu ->
+    1a. To modify the DICOM menu panel code, check the DICOMMenu.Cs file (code for buttons and sliders here as well)
+    1b. To change transfer function files: [VRTK_Scripts] -> PlayArea -> DICOM Menu -> Tf Data Mode (Script).
+        i. Increase size
+        ii. Go to Element
+        iii. Select small button on far right of element
+        iv. Choose texture: a 256x256 image of the transfer function (done in Gimp for our project but alternate sources are possible)
+        v. To change layout of the transfer functions on the display screeb, scroll up to Rect Transform and select each button to                  change layout.
+        vi. To actually add new buttons to DICOM Menu display, Scroll up/down to Dicom Menu (Script), and select button in the space.               Check above to 1a where to actually add code. 
   
 ACKNOWLEDGEMENTS
   A. ASSETS
