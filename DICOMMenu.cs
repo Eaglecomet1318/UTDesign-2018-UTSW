@@ -30,11 +30,17 @@ public class DICOMMenu : MonoBehaviour
             _mInstance = value;
         }
     }
+    
+    /* Sp18
+    | cut away extraneous data of image or add back to it slider
+    | increase or decrease contrast (shading) slider
+    | bring up or bring down image slider
+    */  
     public Slider cutValue;  
     public Slider contrast;
     public Slider height;
     
-      /* Sp18
+    /* Sp18
     | convert to STL (creates mesh for now) function button
     | button to disable any transfer functions applied
     */  
@@ -164,6 +170,11 @@ public class DICOMMenu : MonoBehaviour
         mainVolume.tfDataBlendMode = VolumeBlendMode.Disabled;
     }
 
+
+
+    /*
+    | Various transfer functions (rainbow scale)
+    */
     public void redTFChanged()
     {
         mainVolume.tfData = GetComponent<tfDataMode>().list[0]; // Appears first in list.
