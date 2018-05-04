@@ -21,8 +21,9 @@ PREREQUSITES:
         iv. Choose texture: a 256x256 image of the transfer function (done in Gimp for our project but alternate sources are possible)
         v. To change layout of the transfer functions on the display screen, scroll up to Rect Transform and select each button to change layout.
         vi. To actually add new buttons to DICOM Menu display, Scroll up/down to Dicom Menu (Script), and select button in the space. Check above to 1a where to actually add code. 
-	ANGLE VIWER
-	1. As this is solely modified and carried out within the code, check code comments to understand more.
+		
+  ANGLE VIEWER
+	1. As this is solely modified and carried out within the code, check code comments of AngleView.cs to understand more.
   
 ACKNOWLEDGEMENTS
   A. ASSETS
